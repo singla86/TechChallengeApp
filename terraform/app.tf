@@ -1,6 +1,7 @@
 resource "aws_ecr_repository" "techapp_ecr_repo" {
   name = "techapp-ecr-repo"
 }
+
 resource "aws_ecs_cluster" "techapp_cluster" {
   name = "techapp-cluster" 
 }
@@ -16,6 +17,10 @@ resource "aws_ecs_task_definition" "techapp" {
         {
           "containerPort": 3000,
           "hostPort": 3000
+        },
+      {
+          "containerPort": 5432,
+          "hostPort": 5432
         }
       ],
       "memory": 512,
